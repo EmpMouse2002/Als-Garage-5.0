@@ -160,7 +160,7 @@
         const licenseNumber = document.getElementById('licenseNumber').value;
         const orderDetails = `
 \`\`\`
-Customer Name: ${customerName} [Mech]
+Customer Name: ${customerName}
 Vehicle | Make/Model: ${carMakeModel}
 Plate: ${licenseNumber}
 Upgrades Purchased: ${order.map(item => `${item.name} x${item.quantity}`).join(', ')}
