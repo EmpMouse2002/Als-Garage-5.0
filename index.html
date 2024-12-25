@@ -157,7 +157,7 @@
         const orderDetails = `
 \`\`\`
 Name: ${customerName}
-Vehicle I Make/Model: ${carMakeModel}
+Vehicle | Make/Model: ${carMakeModel}
 Plate: ${licenseNumber}
 Upgrades Purchased: ${order.map(item => `${item.name} x${item.quantity}`).join(', ')}
 Total: $${total.toFixed(2)}
