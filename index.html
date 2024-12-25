@@ -138,11 +138,15 @@
         element.classList.add('selected');
     }
 
+    function formatCurrency(amount) {
+        return '$' + amount.toLocaleString();
+    }
+
     function updateSummary() {
         const orderSummary = document.getElementById('orderSummary');
         const totalPrice = document.getElementById('totalPrice');
         orderSummary.innerHTML = 'Upgrades Purchased: ' + order.map(item => `${item.name} x${item.quantity}`).join(', ');
-        totalPrice.innerHTML = 'Total: $' + total.toFixed(2);
+        totalPrice.innerHTML = 'Total: ' + formatCurrency(total);
     }
 
     function applyDiscount() {
@@ -156,11 +160,12 @@
         const licenseNumber = document.getElementById('licenseNumber').value;
         const orderDetails = `
 \`\`\`
-Name: ${customerName}
+Customer Name: ${customerName} [Mech]
 Vehicle | Make/Model: ${carMakeModel}
 Plate: ${licenseNumber}
 Upgrades Purchased: ${order.map(item => `${item.name} x${item.quantity}`).join(', ')}
-Total: $${total.toFixed(2)}
+Price Charged: ${formatCurrency(total)}
+SHOP: Al's Garage
 \`\`\`
         `;
         navigator.clipboard.writeText(orderDetails);
@@ -183,7 +188,7 @@ Total: $${total.toFixed(2)}
             const itemDiv = document.createElement('div');
             itemDiv.className = 'item';
             const itemButton = document.createElement('button');
-            itemButton.innerText = `${item.name} - $${item.price}`;
+            itemButton.innerText = `${item.name} - ${formatCurrency(item.price)}`;
             itemButton.onclick = () => addItem(item.name, item.price, itemButton);
             itemDiv.appendChild(itemButton);
             itemsContainer.appendChild(itemDiv);
